@@ -1,6 +1,6 @@
 const apiKey="f21cc0f07b0a0a4530a7ef4fdd7b13bf";
 
-function searchCity(){
+function searchByCity(){
     var city= document.getElementById('input').ariaValueMax;
     var urlSearch= `http://api.openweathermap.org/data/2.5/weather?q=${city}&` + `appid=${apiKey}`;
 
@@ -13,6 +13,9 @@ function searchCity(){
     document.getElementById('input').value = "";
     
 }
+
+addEventListener('onClick', searchByCity);
+
 
 function weatherData(data){
     var city= data.name;
@@ -40,7 +43,7 @@ function weekForecast (weekForecast) {
 
          let day = document.createElement('p');
          day.setAttribute("class", "date");
-         day.innerText = new Date(forecast.list[i].dt*1000)toDateString(undefined, "Asia/Kolkata");
+         day.innerText = new Date(forecast.list[i].dt*1000).toLocaleDateString("en-US", {weekday: "long"});
          div.appendChild(day);
 
          let temp = document.createElement('p');
