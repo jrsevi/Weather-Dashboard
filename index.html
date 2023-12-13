@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="'viewport" content="width=device-width, initial-scale=1.0">
+    <title> Weather Dashboard </title>
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
+
+
+<body>
+   <section class="header">
+    
+        <h1>Weather Dashboard</h1>
+        <section class = "search">
+            <input type = "text" name="" id="input" placeholder="Search for a city">
+            <button id = "searchButton" onclick="SearchByCity()">Search</button>
+            </input>
+        </section>
+   </section>
+
+   <main>
+    <section class="Weather">
+        <h2 id="cityName">Portland,OR</h2>
+        <section class = "weather-box">
+            <img src="http://openweathermap.org/img/wn/10d@4x.png" alt="weather icon" id="img">
+            <p id="temperature">Temp: </p>
+            <p id="wind">Wind: </p>
+            <p id="humidity">Humidity: </p>
+        </section>
+        <span id="clouds"></span>
+    </section>
+   </main>
+
+
+    <section class="weekForecast">
+        <p>Forecast</p>
+
+        <section class="forecast-box">
+            <p id="day1"></p>
+            <img src="" alt="" id="img1">
+            <p id="temp1"></p>
+        </section>
+
+        <section class="forecast-box">
+            <p id="day2"></p>
+            <img src="" alt="" id="img2">
+            <p id="temp2"></p>
+        </section>
+
+        <section class="forecast-box">
+            <p id="day3"></p>
+            <img src="" alt="" id="img3">
+            <p id="temp3"></p>
+        </section>
+
+        <section class="forecast-box">
+            <p id="day4"></p>
+            <img src="" alt="" id="img4">
+            <p id="temp4"></p>
+        </section>
+
+        <section class="forecast-box">
+            <p id="day5"></p>
+            <img src="" alt="" id="img5">
+            <p id="temp5"></p>
+        </section>
+
+    </section>
+    <script src="./assets/script.js"></script>
+</body>
+</html>
+    
+
+
+
+
