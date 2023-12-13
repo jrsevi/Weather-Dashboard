@@ -1,7 +1,7 @@
 const apiKey="f21cc0f07b0a0a4530a7ef4fdd7b13bf";
 
 function searchByCity(){
-    var city= document.getElementById('input').ariaValueMax;
+    var city= document.getElementById('input').value;
     var urlSearch= `http://api.openweathermap.org/data/2.5/weather?q=${city}&` + `appid=${apiKey}`;
 
     fetch(urlSearch).then((response) => {
@@ -12,63 +12,64 @@ function searchByCity(){
     })
     document.getElementById('input').value = "";
     
-}
+
 
 
 
 
 function weatherData(data){
     var city= data.name;
-    var temp= data.main.temp;
+    var temp=data.main.temp;
     var tempCelsius= Math.round(temp - 273.15);
     var tempFahrenheit= Math.round((temp - 273.15) * 9/5 + 32);
-    var wind= data.wind[0].main;
-    var weatherDescription= data.weather[0].description;
-    var icon= data.weather[0].icon;
+    var wind= data.wind.speed;
+    var humidity= data.main.humidity;
+    
+    let icon1= data.weather[0].icon;
+    let icon1Url = "http://openweathermap.org/img/wn/" + icon1 + "@2x.png";
+    document.getElementById('img').src= icon1Url;
+
 
     document.getElementById('city').innerHTML = city;
-    document.getElementById('temp').innerHTML = tempCelsius + "°C";
-    document.getElementById('wind').innerHTML = wind;
-    document.getElementById('humidity').innerHTML = humidity;
-    document.getElementById('weatherDescription').innerHTML = weatherDescription;
-    document.getElementById('img').src = "http://openweathermap.org/img/w/" + icon + ".png";
+    document.getElementById('temp').innerHTML = "Temperature: " + tempFahrenheit + "°F";
+    document.getElementById('wind').innerHTML = "Windspeed: " + wind;
+    document.getElementById('humidity').innerHTML = "Humidity: " + humidity;
+    
+    
+
 }
 
-function weekForecast (weekForecast) {
-    document.querySelector(".weekForecast").innerHTML = "";
-    for (let i = 8; i < weekForecast.length; i += 8) {
-        console.log(weekForecast.list[i]);
-         let div = document.createElement("div");
-         div.setAttribute("class", "day");
-
-         let day = document.createElement('p');
-         day.setAttribute("class", "date");
-         day.innerText = new Date(forecast.list[i].dt*1000).toLocaleDateString("en-US", {weekday: "long"});
-         div.appendChild(day);
-
-         let temp = document.createElement('p');
-         temp.innerText = Math.floor(forecast.list[i].main.temp - 273.15) + "°C";
-            div.appendChild(temp);
+function dayForecast(forecast){
+    document.querySelector('.weekF').innerHTML=''
+    for (let i = 8; i < forecast.list.length; i+=8) {
+        console.log(forecast.list[i]);
+        let div= document.createElement('div');
+        div.setAttribute('class','dayF');
         
-        let wind= document.createElement('p');
-        wind.innerText = forecast.list[i].wind.speed + "m/s";
-        div.appendChild(wind);
+        let day= document.createElement('p');
+        day.setAttribute('class','date')
+        day.innerText= new Date(forecast.list[i].dt*1000).toDateString(undefined,'Asia/Kolkata');
+        div.appendChild(day);
 
-        let humidity= document.createElement('p');
-        humidity.innerText = forecast.list[i].main.humidity + "%";
-        div.appendChild(humidity);
+        let temp= document.createElement('p');
+        temp.innerText= Math.floor((forecast.list[i].main.temp_max - 273))+ ' °C' + ' / ' + Math.floor((forecast.list[i].main.temp_min - 273))+ ' °C';
+        div.appendChild(temp)
 
-        let img= document.createElement('img');
-        img.src = "http://openweathermap.org/img/w/" + forecast.list[i].weather[0].icon + ".png";
-        div.appendChild(img);
-        
+        let description= document.createElement('p');
+        description.setAttribute('class','desc')
+        description.innerText= forecast.list[i].weather[0].description;
+        div.appendChild(description);
+
+        document.querySelector('.weekF').appendChild(div)
     }
+}
 }
 
 let searchButton = document.getElementById('searchButton');
 
 searchButton.addEventListener('click', function() {
     searchByCity();
+    dayForecast();
 });
 
 

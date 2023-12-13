@@ -1,0 +1,73 @@
+body {
+    padding: 1rem 5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    background-color:lemonchiffon;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.header h1 {
+    text-decoration: Underline;
+    
+}
+
+#input {
+    font-size: 20px;
+    padding: 5px 10px;
+    outline: none;
+    border: black 1px solid;
+    background: lightpink;
+}
+
+.search {
+    background: none;
+    padding: 5px 10px;
+}
+
+.Weather {
+    text-align:center;
+}
+
+#city {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.Weather img{
+    width:100px;
+    height:100px;   
+}
+
+#temp {
+    font-size: 28px;
+    margin: 0;
+    margin-left: auto;
+}
+
+#wind {
+    font-size: 28px;
+    margin: 0;
+    margin-left: auto;
+}
+
+#humidity {
+    font-size: 28px;
+    margin: 0;
+    margin-left: auto;
+    padding: 8px 40px;
+}
+
+.weather-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+
