@@ -14,7 +14,7 @@ function searchByCity(){
     
 }
 
-addEventListener('onClick', searchByCity);
+
 
 
 function weatherData(data){
@@ -64,5 +64,11 @@ function weekForecast (weekForecast) {
         
     }
 }
+
+let searchButton = document.getElementById('searchButton');
+
+searchButton.addEventListener('click', function() {
+    searchByCity();
+});
 
 
