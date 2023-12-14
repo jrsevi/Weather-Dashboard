@@ -1,5 +1,9 @@
+
+//*API Key
 const apiKey="f21cc0f07b0a0a4530a7ef4fdd7b13bf";
 
+
+//*Setting up search button to receive data from API
 function searchByCity(){
     var city= document.getElementById('input').value;
     var urlSearch= `http://api.openweathermap.org/data/2.5/weather?q=${city}&` + `appid=${apiKey}`;
@@ -26,7 +30,7 @@ function searchByCity(){
 }
 
 
-
+//*Displays current weather data for input city
 function weatherData(data){
     var city= data.name;
     var temp=data.main.temp;
@@ -50,13 +54,15 @@ function weatherData(data){
 
 }
 
+//* Displays 5 day forecast for input city
 function dayForecast(forecast){
     document.querySelector('.weekF').innerHTML=''
+    //*Loop to display 5 day forecast
     for (let i = 7; i < forecast.list.length; i+=7) {
         console.log(forecast.list[i]);
         let div= document.createElement('div');
         div.setAttribute('class','dayF');
-        
+    //*Displays date, temperature, humidity, windspeed, and icon for each day  
         let day= document.createElement('p');
         day.setAttribute('class','date')
         day.innerText= new Date(forecast.list[i].dt * 1000).toDateString(undefined,'Asia/Kolkata');
@@ -85,7 +91,7 @@ function dayForecast(forecast){
     }
 }
 
-
+//*Saves search history to local storage
 function saveSearch () {
     let inputVal = document.getElementById('input').value;
     let searches = JSON.parse(localStorage.getItem('searches')) || [];
@@ -106,7 +112,7 @@ function saveSearch () {
 
 
 
-
+//*event listeners
 searchButton.addEventListener('click', function() {
     saveSearch();
     searchByCity();
@@ -114,7 +120,7 @@ searchButton.addEventListener('click', function() {
 });
 
 let recentSearch = document.querySelector('.recentSearch');
-
+//*searches by city when recent search is clicked
 recentSearch.addEventListener('click', function(event) {
     console.log(event.target.textContent);
     document.getElementById('input').value = event.target.textContent;
@@ -122,6 +128,7 @@ recentSearch.addEventListener('click', function(event) {
     dayForecast();
 });
 
+//*displays recent searches when page is loaded
 function displaySearches() {
     let searches = JSON.parse(localStorage.getItem('searches')) || [];
     let recentSearch = document.querySelector('.recentSearch');
