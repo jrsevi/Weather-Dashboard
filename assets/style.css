@@ -33,8 +33,15 @@ body {
 }
 
 .search {
-    background: none;
+    background: ;
     padding: 5px 10px;
+}
+
+.search button {
+    background: white;
+    border: black 1px solid;
+    font-size: 18px;
+    font-style: underline;
 }
 
 .recent {
@@ -52,7 +59,7 @@ body {
     list-style: none;
 }
 
-button { 
+.recentSearch button { 
     background: lightblue;
     border: none;
     font-size: 18px;
