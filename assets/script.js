@@ -90,8 +90,12 @@ function dayForecast(forecast){
 
 
 let searchButton = document.getElementById('searchButton');
+var cityInput = document.getElementById('input');
 
 searchButton.addEventListener('click', function() {
+    var recentSearch = cityInput.value;
+    localStorage.setItem('recentSearch', recentSearch);
+
     searchByCity();
     dayForecast();
 });
