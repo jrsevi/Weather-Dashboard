@@ -38,10 +38,10 @@ function weatherData(data){
     
 
 }
-
+}
 function dayForecast(forecast){
     document.querySelector('.weekF').innerHTML=''
-    for (let i = 8; i < forecast.list.length; i+=8) {
+    for (let i = 5; i < forecast.list.length; i+=5) {
         console.log(forecast.list[i]);
         let div= document.createElement('div');
         div.setAttribute('class','dayF');
@@ -63,7 +63,7 @@ function dayForecast(forecast){
         document.querySelector('.weekF').appendChild(div)
     }
 }
-}
+
 
 let searchButton = document.getElementById('searchButton');
 
@@ -71,5 +71,4 @@ searchButton.addEventListener('click', function() {
     searchByCity();
     dayForecast();
 });
-
 
