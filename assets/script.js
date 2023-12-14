@@ -6,7 +6,7 @@ const apiKey="f21cc0f07b0a0a4530a7ef4fdd7b13bf";
 //*Setting up search button to receive data from API
 function searchByCity(){
     var city= document.getElementById('input').value;
-    var urlSearch= `http://api.openweathermap.org/data/2.5/weather?q=${city}&` + `appid=${apiKey}`;
+    var urlSearch= `https://api.openweathermap.org/data/2.5/weather?q=${city}&` + `appid=${apiKey}`;
 
     fetch(urlSearch).then((response) => {
         return response.json();
