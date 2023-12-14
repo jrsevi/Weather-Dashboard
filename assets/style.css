@@ -48,6 +48,22 @@ body {
 
 }
 
+.recentSearch {
+    list-style: none;
+}
+
+button { 
+    background: lightblue;
+    border: none;
+    font-size: 18px;
+    font-style: underline;
+}
+
+button:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .Weather {
     text-align:center;
     padding: 2rem;
@@ -83,12 +99,12 @@ body {
     padding: 8px 40px;
 }
 
-.weather-box {
+.box {
     display:inline-block;
     align-items: center;
     justify-content: center;
     border: 1px solid black;
-    background-color:azure;
+    background-color:#FFF8D7;
     width:400px;
 }
 
@@ -99,12 +115,14 @@ body {
     margin:0%
 }
 
-
+.date {
+    font-size: larger;
+}
 
 .time,.date{
     color: Black;
     background-color: lightblue;
-    padding: 5px 10px;
+    
 }
 
 .weekF{
@@ -113,7 +131,7 @@ body {
 }
 
 p {
-    background-color: azure;
+    
     padding: 5px 10px;
 }
 .desc{

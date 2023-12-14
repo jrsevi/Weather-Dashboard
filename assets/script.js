@@ -86,17 +86,53 @@ function dayForecast(forecast){
 }
 
 
+function saveSearch () {
+    let inputVal = document.getElementById('input').value;
+    let searches = JSON.parse(localStorage.getItem('searches')) || [];
+    searches.push(inputVal);
+    localStorage.setItem('searches', JSON.stringify(searches));
+
+    let recentSearch = document.querySelector('.recentSearch');
+    recentSearch.innerHTML = '';
+    searches.forEach(search =>{
+        let newElement= document.createElement('button');
+        newElement.textContent = search;
+        recentSearch.appendChild(newElement);
+
+    })
+
+}
 
 
 
-let searchButton = document.getElementById('searchButton');
-var cityInput = document.getElementById('input');
+
 
 searchButton.addEventListener('click', function() {
-    var recentSearch = cityInput.value;
-    localStorage.setItem('recentSearch', recentSearch);
-
+    saveSearch();
     searchByCity();
     dayForecast();
 });
+
+let recentSearch = document.querySelector('.recentSearch');
+
+recentSearch.addEventListener('click', function(event) {
+    console.log(event.target.textContent);
+    document.getElementById('input').value = event.target.textContent;
+    searchByCity();
+    dayForecast();
+});
+
+function displaySearches() {
+    let searches = JSON.parse(localStorage.getItem('searches')) || [];
+    let recentSearch = document.querySelector('.recentSearch');
+    recentSearch.innerHTML = '';
+    searches.forEach(search =>{
+        let newElement= document.createElement('button');
+        newElement.textContent = search;
+        recentSearch.appendChild(newElement);
+
+    })
+}
+
+window.onload = displaySearches();
 
