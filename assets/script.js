@@ -47,7 +47,7 @@ function weatherData(data){
 
     document.getElementById('city').innerHTML = city + " " + date;
     document.getElementById('temp').innerHTML = "Temperature: " + tempFahrenheit + "°F";
-    document.getElementById('wind').innerHTML = "Windspeed: " + wind;
+    document.getElementById('wind').innerHTML = "Windspeed: " + wind + "mph";
     document.getElementById('humidity').innerHTML = "Humidity: " + humidity;
     
     
